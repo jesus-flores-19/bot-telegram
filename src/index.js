@@ -42,4 +42,44 @@ bot.command("borrar", (ctx) => {
 })
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//////////   BOT.ON
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+bot.on("text", (ctx) => {
+    ///////////////////////////////////////////
+    // Login
+    ///////////////////////////////////////////
+    if (escucharLogin) {
+        console.log("Escuchando - sesion Login");
+        const texto = ctx.message.text.toLowerCase();
+        if (texto === "jesus") {
+            ctx.reply("Bienvenido usuario.")
+
+            escucharLogin = false
+            ctx.telegram.sendMessage(ctx.chat.id, "Ingrese su numero telefonico: ", {
+                reply_markup: {
+                    keyboard: [
+                        [{ text: "Enviar mi contacto", request_contact: true }]
+                    ],
+                    one_time_keyboard: true,
+                    resize_keyboard: true
+                }
+            })
+            escucharContacto = true
+            return
+        } else {
+            ctx.reply("Usuario incorrecto")
+            return
+        }
+    }
+    if (escucharContacto) {
+        ctx.reply("Agrega el contacto, hijo de la verga")
+        return
+    }
+})
+
+
+
 bot.launch()
