@@ -37,5 +37,9 @@ bot.action("login", (ctx) => {
     escucharLogin = true;
 })
 
+bot.command("borrar", (ctx) => {
+    console.log("hola");
+})
+
 
 bot.launch()
