@@ -31,4 +31,11 @@ bot.start((ctx) => {
     }
 })
 
+bot.action("login", (ctx) => {
+    ctx.answerCbQuery()
+    ctx.telegram.sendMessage(ctx.chat.id, "Ingrese el usuario")
+    escucharLogin = true;
+})
+
+
 bot.launch()
