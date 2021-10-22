@@ -80,6 +80,15 @@ bot.on("text", (ctx) => {
     }
 })
 
+bot.on("contact", (ctx) => {
+    ctx.telegram.sendMessage(ctx.chat.id, "Ahuevo padre, te rifaste\n /borrar", {
+        reply_markup: {
+            remove_keyboard: true
+        }
+    }).then(() => {
+        escucharContacto = false
+    })
+})
 
 
 bot.launch()
